@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "postgresql"
+  // url      = env("DATABASE_URL")
+}
+model Superstar {
+  id         String   @id @default(cuid())
+  name       String
+  brand      String
+  imageUrl   String
+  isChampion Boolean  @default(false)
+  wins       Int      @default(0)
+  losses     Int      @default(0)
+  createdAt  DateTime @default(now())
+}
