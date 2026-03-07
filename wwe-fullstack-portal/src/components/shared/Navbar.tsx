@@ -1,8 +1,8 @@
 export default function Navbar () {
     return (
-        <nav className="bg-gray-900 p-5">
+        <nav className="bg-gray-900 p-4 fixed w-full top-0 z-50">
             <div className="container mx-auto flex items-center justify-between">
-                <div className="text-white text-lg font-bold cursor-pointer">WWE</div>
+                <img src="/wwe.png"  alt="WWE Logo" className="text-white text-lg font-bold cursor-pointer h-8 md:h-12 w-auto object-contain mix-blend-screen" />
                     <div className="space-x-5 flex justify-end items-center">
                         <a href="/" className="text-gray-300 hover:text-white">Home</a>
 
