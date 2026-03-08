@@ -1,6 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="text-white py-6 border-t border-zinc-800 mt-auto bg-gray-900 w-full">
+    /* 1. Yahan se 'border-t' aur 'border-zinc-800' ko bilkul hata diya hai */
+    <footer className="text-white py-6 mt-auto bg-gray-900 w-full">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
         
         <p className="text-xs">
