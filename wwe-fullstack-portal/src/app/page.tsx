@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { PrismaClient } from "@prisma/client"; // Ye line add karein
+
+const prisma = new PrismaClient();
 
 const news1 = [
   {
@@ -111,7 +114,9 @@ const news4 = [
   },
 ];
 
-export default function Page() {
+export default async function Page() {
+
+  const superstars = await prisma.superstar.findMany();
   return (
     <div className="w-full min-h-screen bg-white pb-20 overflow-x-hidden">
       <div className="pt-20 mb-12 w-full">
@@ -120,6 +125,22 @@ export default function Page() {
             WWE News March 2026
           </h1>
         </div>
+      </div>
+
+      <div className="w-full px-4 md:px-10 max-w-[1400px] mx-auto mb-10">
+        <h2 className="text-2xl font-black italic text-red-600 mb-4 uppercase">Roster From Database</h2>
+        {superstars.length === 0 ? (
+          <p className="text-gray-400 font-mono">Locker room is empty. Add via Prisma Studio!</p>
+        ) : (
+          superstars.map((star) => (
+            <div key={star.id} className="flex gap-4 p-4 bg-zinc-100 border-l-4 border-black mb-2">
+               <div>
+                 <p className="font-black uppercase italic text-xl">{star.name}</p>
+                 <p className="text-sm text-gray-500">{star.brand} | {star.height}</p>
+               </div>
+            </div>
+          ))
+        )}
       </div>
 
 
@@ -316,6 +337,8 @@ export default function Page() {
             </div>
           </Link>
         ))}
+
+        
       </div>
 
     </div>
