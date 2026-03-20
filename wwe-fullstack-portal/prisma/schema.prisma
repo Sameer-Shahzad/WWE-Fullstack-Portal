@@ -8,12 +8,14 @@ datasource db {
 }
 
 model Superstar {
-  id         String   @id @default(cuid())
-  name       String
-  brand      String
-  imageUrl   String
-  isChampion Boolean  @default(false)
-  wins       Int      @default(0)
-  losses     Int      @default(0)
-  createdAt  DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  brand     String   
+  image     String
+  height    String?  
+  weight    String? 
+  intro     String
+  bio       String?
+  createdAt DateTime @default(now())
 }
